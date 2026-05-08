@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\kaio.mfernandes\\source\\repos\\PI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{81F96872-E8D5-4E2C-B6A8-EEDB1B2A9E1E}|PI\\PI.csproj|c:\\users\\kaio.mfernandes\\source\\repos\\pi\\pi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{81F96872-E8D5-4E2C-B6A8-EEDB1B2A9E1E}|PI\\PI.csproj|C:\\Users\\kaio.mfernandes\\source\\repos\\PI\\pi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{81F96872-E8D5-4E2C-B6A8-EEDB1B2A9E1E}|PI\\PI.csproj|solutionrelative:pi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81F96872-E8D5-4E2C-B6A8-EEDB1B2A9E1E}|PI\\PI.csproj|C:\\Users\\kaio.mfernandes\\source\\repos\\PI\\pi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{81F96872-E8D5-4E2C-B6A8-EEDB1B2A9E1E}|PI\\PI.csproj|c:\\users\\kaio.mfernandes\\source\\repos\\pi\\pi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81F96872-E8D5-4E2C-B6A8-EEDB1B2A9E1E}|PI\\PI.csproj|solutionrelative:pi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -48,9 +48,10 @@
               "RelativeDocumentMoniker": "PI\\Form1.cs",
               "ToolTip": "C:\\Users\\kaio.mfernandes\\source\\repos\\PI\\PI\\Form1.cs",
               "RelativeToolTip": "PI\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACwAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-07T22:35:12.457Z"
+              "WhenOpened": "2026-05-07T22:35:12.457Z",
+              "EditorCaption": ""
             }
           ]
         }
