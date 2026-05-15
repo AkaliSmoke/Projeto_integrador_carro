@@ -36,7 +36,7 @@
             this.lbModelo = new System.Windows.Forms.Label();
             this.lbMarca = new System.Windows.Forms.Label();
             this.lbAno = new System.Windows.Forms.Label();
-            this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.lbCor = new System.Windows.Forms.Label();
             this.txtPlaca = new System.Windows.Forms.TextBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
@@ -45,12 +45,12 @@
             this.lbQuilometragem = new System.Windows.Forms.Label();
             this.nudQuilometragem = new System.Windows.Forms.NumericUpDown();
             this.dtpAno = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbResultadoPlaca = new System.Windows.Forms.Label();
+            this.lbResultadoModelo = new System.Windows.Forms.Label();
+            this.lbResultadoMarca = new System.Windows.Forms.Label();
+            this.lbResultadoAno = new System.Windows.Forms.Label();
+            this.lbResultadoCor = new System.Windows.Forms.Label();
+            this.lbResultadoQuilometragem = new System.Windows.Forms.Label();
             this.btnConsultarLista = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuilometragem)).BeginInit();
@@ -76,6 +76,7 @@
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnConsultar
             // 
@@ -136,16 +137,16 @@
             this.lbAno.TabIndex = 7;
             this.lbAno.Text = "Ano:";
             // 
-            // btnLimpar
+            // btnExcluir
             // 
-            this.btnLimpar.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(134, 358);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(109, 37);
-            this.btnLimpar.TabIndex = 8;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Location = new System.Drawing.Point(134, 358);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(109, 37);
+            this.btnExcluir.TabIndex = 8;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // lbCor
             // 
@@ -163,7 +164,6 @@
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(386, 20);
             this.txtPlaca.TabIndex = 10;
-            this.txtPlaca.TextChanged += new System.EventHandler(this.txtPlaca_TextChanged);
             // 
             // txtModelo
             // 
@@ -207,62 +207,68 @@
             // 
             this.dtpAno.Location = new System.Drawing.Point(85, 121);
             this.dtpAno.Name = "dtpAno";
-            this.dtpAno.Size = new System.Drawing.Size(211, 20);
+            this.dtpAno.Size = new System.Drawing.Size(231, 20);
             this.dtpAno.TabIndex = 18;
             // 
-            // label1
+            // lbResultadoPlaca
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(488, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "label1";
+            this.lbResultadoPlaca.AutoSize = true;
+            this.lbResultadoPlaca.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbResultadoPlaca.Location = new System.Drawing.Point(487, 18);
+            this.lbResultadoPlaca.Name = "lbResultadoPlaca";
+            this.lbResultadoPlaca.Size = new System.Drawing.Size(51, 19);
+            this.lbResultadoPlaca.TabIndex = 19;
+            this.lbResultadoPlaca.Text = "label1";
             // 
-            // label2
+            // lbResultadoModelo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(488, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "label2";
+            this.lbResultadoModelo.AutoSize = true;
+            this.lbResultadoModelo.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbResultadoModelo.Location = new System.Drawing.Point(487, 54);
+            this.lbResultadoModelo.Name = "lbResultadoModelo";
+            this.lbResultadoModelo.Size = new System.Drawing.Size(51, 19);
+            this.lbResultadoModelo.TabIndex = 20;
+            this.lbResultadoModelo.Text = "label2";
             // 
-            // label3
+            // lbResultadoMarca
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(488, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "label3";
+            this.lbResultadoMarca.AutoSize = true;
+            this.lbResultadoMarca.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbResultadoMarca.Location = new System.Drawing.Point(487, 87);
+            this.lbResultadoMarca.Name = "lbResultadoMarca";
+            this.lbResultadoMarca.Size = new System.Drawing.Size(51, 19);
+            this.lbResultadoMarca.TabIndex = 21;
+            this.lbResultadoMarca.Text = "label3";
             // 
-            // label4
+            // lbResultadoAno
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(488, 127);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "label4";
+            this.lbResultadoAno.AutoSize = true;
+            this.lbResultadoAno.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbResultadoAno.Location = new System.Drawing.Point(487, 124);
+            this.lbResultadoAno.Name = "lbResultadoAno";
+            this.lbResultadoAno.Size = new System.Drawing.Size(51, 19);
+            this.lbResultadoAno.TabIndex = 22;
+            this.lbResultadoAno.Text = "label4";
             // 
-            // label5
+            // lbResultadoCor
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(488, 164);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "label5";
+            this.lbResultadoCor.AutoSize = true;
+            this.lbResultadoCor.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbResultadoCor.Location = new System.Drawing.Point(487, 159);
+            this.lbResultadoCor.Name = "lbResultadoCor";
+            this.lbResultadoCor.Size = new System.Drawing.Size(51, 19);
+            this.lbResultadoCor.TabIndex = 23;
+            this.lbResultadoCor.Text = "label5";
             // 
-            // label6
+            // lbResultadoQuilometragem
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(488, 198);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "label6";
+            this.lbResultadoQuilometragem.AutoSize = true;
+            this.lbResultadoQuilometragem.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbResultadoQuilometragem.Location = new System.Drawing.Point(488, 192);
+            this.lbResultadoQuilometragem.Name = "lbResultadoQuilometragem";
+            this.lbResultadoQuilometragem.Size = new System.Drawing.Size(51, 19);
+            this.lbResultadoQuilometragem.TabIndex = 24;
+            this.lbResultadoQuilometragem.Text = "label6";
             // 
             // btnConsultarLista
             // 
@@ -281,12 +287,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 450);
             this.Controls.Add(this.btnConsultarLista);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbResultadoQuilometragem);
+            this.Controls.Add(this.lbResultadoCor);
+            this.Controls.Add(this.lbResultadoAno);
+            this.Controls.Add(this.lbResultadoMarca);
+            this.Controls.Add(this.lbResultadoModelo);
+            this.Controls.Add(this.lbResultadoPlaca);
             this.Controls.Add(this.dtpAno);
             this.Controls.Add(this.nudQuilometragem);
             this.Controls.Add(this.lbQuilometragem);
@@ -295,7 +301,7 @@
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.txtPlaca);
             this.Controls.Add(this.lbCor);
-            this.Controls.Add(this.btnLimpar);
+            this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.lbAno);
             this.Controls.Add(this.lbMarca);
             this.Controls.Add(this.lbModelo);
@@ -323,7 +329,7 @@
         private System.Windows.Forms.Label lbModelo;
         private System.Windows.Forms.Label lbMarca;
         private System.Windows.Forms.Label lbAno;
-        private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Label lbCor;
         private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.TextBox txtModelo;
@@ -332,12 +338,12 @@
         private System.Windows.Forms.Label lbQuilometragem;
         private System.Windows.Forms.NumericUpDown nudQuilometragem;
         private System.Windows.Forms.DateTimePicker dtpAno;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbResultadoPlaca;
+        private System.Windows.Forms.Label lbResultadoModelo;
+        private System.Windows.Forms.Label lbResultadoMarca;
+        private System.Windows.Forms.Label lbResultadoAno;
+        private System.Windows.Forms.Label lbResultadoCor;
+        private System.Windows.Forms.Label lbResultadoQuilometragem;
         private System.Windows.Forms.Button btnConsultarLista;
     }
 }

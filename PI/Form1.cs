@@ -27,56 +27,79 @@ namespace PI
             string campoPlaca = txtPlaca.Text;
             string campoModelo = txtModelo.Text;
             string campoMarca = txtMarca.Text;
-            string campoData = dtpAno.Text;
+
+            // CORRIGIDO: Captura apenas o número do ano (ex: 2026) para enviar ao banco INT
+            int campoAno = dtpAno.Value.Year;
+
             string campoCor = txtCor.Text;
             string campoQuilometragem = nudQuilometragem.Value.ToString();
 
-            DateTime dataConvertida = DateTime.Parse(campoData); 
-
             int controleLinhasAfetadas = 0;
 
-            
-            using (MySqlConnection conn = new MySqlConnection(DADOS_CONEXAO) )
-            {// utilizo das informações
+            using (MySqlConnection conn = new MySqlConnection(DADOS_CONEXAO))
+            {
                 conn.Open();
                 string scriptInsert = "INSERT INTO tb_carros (placa, modelo, marca, ano, cor, quilometragem) " +
                       "VALUES (@placa, @modelo, @marca, @ano, @cor, @km)";
 
-                using (MySqlCommand comando = new MySqlCommand(scriptInsert,conn))
+                using (MySqlCommand comando = new MySqlCommand(scriptInsert, conn))
                 {
                     comando.Parameters.AddWithValue("@placa", campoPlaca);
                     comando.Parameters.AddWithValue("@modelo", campoModelo);
                     comando.Parameters.AddWithValue("@marca", campoMarca);
-                    comando.Parameters.AddWithValue("@ano", campoData); // Se for int, o banco aceita direto
+                    comando.Parameters.AddWithValue("@ano", campoAno); // Enviando o ano como número
                     comando.Parameters.AddWithValue("@cor", campoCor);
-                    comando.Parameters.AddWithValue("@km", campoQuilometragem); // Passando o decimal do NumericUpDown
+                    comando.Parameters.AddWithValue("@km", campoQuilometragem);
+
+                    // CORRIGIDO: Faltava esta linha para realmente executar o comando no MySQL
+                    controleLinhasAfetadas = comando.ExecuteNonQuery();
                 }
                 conn.Close();
-            }//MysqlConnection
-            if (controleLinhasAfetadas > 0){
-                MessageBox.Show("Dados salvo com sucesso!");
-            } else
+            }
+
+            if (controleLinhasAfetadas > 0)
+            {
+                MessageBox.Show("Dados salvos com sucesso!");
+            }
+            else
             {
                 MessageBox.Show("Ops, Algo deu errado!!!");
             }
         }
 
 
-        private void btnLimpar_Click(object sender, EventArgs e)
+
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
+            string campoPlaca = txtPlaca.Text;
+            int controleLinhasAfetadas = 0;
 
-            txtPlaca.Clear();
-            txtModelo.Clear();
-            txtMarca.Clear();
-            txtCor.Clear();
+            using (MySqlConnection conn = new MySqlConnection(DADOS_CONEXAO))
+            {
+                conn.Open();
+                string scriptDelete = "DELETE FROM tb_carros WHERE placa = @placa";
 
-            dtpAno.Value = DateTime.Now;
+                using (MySqlCommand comando = new MySqlCommand(scriptDelete, conn))
+                {
+                    comando.Parameters.AddWithValue("@placa", campoPlaca);
 
-            nudQuilometragem.Value = 0;
+                    // Executa a exclusão no MySQL
+                    controleLinhasAfetadas = comando.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
 
-            txtPlaca.Focus();
-
+            // ADICIONADO: Feedback para o usuário
+            if (controleLinhasAfetadas > 0)
+            {
+                MessageBox.Show("Veículo excluído com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Nenhum veículo encontrado com esta placa para excluir.");
+            }
         }
+
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
@@ -144,10 +167,43 @@ namespace PI
             }
         }
 
-
-        private void txtPlaca_TextChanged(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
-            
+            string campoPlaca = txtPlaca.Text;
+            string campoModelo = txtModelo.Text;
+            string campoMarca = txtMarca.Text;
+
+            // Captura apenas o ano selecionado no DateTimePicker
+            int campoAno = dtpAno.Value.Year;
+
+            string campoCor = txtCor.Text;
+
+            // Captura o valor numérico do NumericUpDown
+            decimal campoQuilometragem = nudQuilometragem.Value;
+
+            int controleLinhasAfetadas = 0;
+
+            using (MySqlConnection conn = new MySqlConnection(DADOS_CONEXAO))
+            {
+                // utilize das informações
+                conn.Open();
+                string scriptUpdate = "UPDATE tb_carros SET " +
+                "placa = @placa, modelo = @modelo, marca = @marca, ano = @ano, cor = @cor, quilometragem = @quilometragem " +
+                "WHERE id_carro = @id_carro";
+
+                using (MySqlCommand comando = new MySqlCommand(scriptUpdate, conn))
+                {
+                    comando.Parameters.AddWithValue("@placa", campoPlaca);
+                    comando.Parameters.AddWithValue("@modelo", campoModelo);
+                    comando.Parameters.AddWithValue("@marca", campoMarca);
+                    comando.Parameters.AddWithValue("@ano", campoAno);
+                    comando.Parameters.AddWithValue("@cor", campoCor);
+                    comando.Parameters.AddWithValue("@quilometragem", campoQuilometragem);
+
+                    controleLinhasAfetadas = comando.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
         }
 
     }
